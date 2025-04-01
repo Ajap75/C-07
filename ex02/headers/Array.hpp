@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array.hpp                                          :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anastruc <anastruc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 18:28:53 by anastruc          #+#    #+#             */
-/*   Updated: 2025/04/01 13:19:47 by anastruc         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:19:30 by anastruc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdexcept>
 #include <aio.h>
 #include "stdlib.h"
+#include <iostream>
+
 
 
 template <typename T>
@@ -24,15 +26,21 @@ class Array
 {
     private :
     
-    size_t _size;
+    int _size;
     
     public :
     
     T* _data;
     Array() : _size(0), _data(NULL)  {}
-    Array(unsigned n) : _size(n) 
+    Array(unsigned n) : _size(n), _data(new T[size()]) 
     {
-        _data = new T[size()];
+        int i;
+        i = 0;
+        while (i < size())
+        {
+            _data[i] = T();
+            i++;
+        }
     }
     ~Array()
     {
@@ -41,7 +49,7 @@ class Array
     
     Array(const Array &other) : _size(other._size)
     {
-        size_t i;
+        int i;
         i = 0;
         _data = new T[size()];
         while (i < size())
@@ -50,6 +58,7 @@ class Array
             i++;
         }
     }
+    
     Array& operator=(const Array &other)
     {
         int i;
@@ -61,19 +70,21 @@ class Array
             _data = new T[other._size];
             while (i < size())
             {
-                _data[i] = other.data[i];
+                _data[i] = other._data[i];
                 i++;
             }
         }
+        return (*this);
     }
 
-    T& operator[](size_t index)
+    T& operator[](int index)
     {
-        if (index >= size())
-            throw std::out_of_range("index error");
+        // std::cout << size() << std::endl;
+        if (index >= size() || index < 0)
+            throw std::out_of_range("Exception throwed : index error\n");
         return (_data[index]);
     }
-    size_t size() const
+    int size() const
     {
         return (_size);
     }

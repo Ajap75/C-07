@@ -6,7 +6,7 @@
 #    By: anastruc <anastruc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 12:53:29 by anastruc          #+#    #+#              #
-#    Updated: 2025/03/31 18:27:26 by anastruc         ###   ########.fr        #
+#    Updated: 2025/04/01 16:54:12 by anastruc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ BLUE = \033[1;36m
 NC = \033[0m
 
 HEADER = iter.hpp \
+Array.hpp \
 template_function.hpp \
 
 
