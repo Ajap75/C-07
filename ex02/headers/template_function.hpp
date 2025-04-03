@@ -6,7 +6,7 @@
 /*   By: anastruc <anastruc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:50:33 by anastruc          #+#    #+#             */
-/*   Updated: 2025/04/01 12:20:19 by anastruc         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:46:58 by anastruc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void print(T const &n)
 };
 
 template <typename T>
-void print_array(Array<T> *array)
+void print_array(Array<T> const &array)
 {
-    size_t i;
+    int i;
     i = 0;
 
-    while (i < array->size())
+    while (i < array.size())
     {
-        print(array->_data[i]);
+        print(array[i]);
         i++;
     }
-}
+};
 
 #endif
